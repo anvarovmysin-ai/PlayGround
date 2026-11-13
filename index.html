@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#9bd9e8" />
+  <title>Blockhaven — A tiny world, yours to shape</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="world" aria-label="Your block world"></canvas>
+    <div class="sky-wash"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Blockhaven home"><span class="brand-mark"><i></i><i></i><i></i></span><span>block<span class="brand-light">haven</span></span></a>
+      <div class="world-label"><span class="live-dot"></span><span>YOUR LITTLE WORLD</span><span class="label-divider"></span><span id="world-name">Sunmeadow</span></div>
+      <div class="top-actions"><button class="icon-btn" id="sound-btn" title="Toggle sound" aria-label="Toggle sound">♪</button><button class="icon-btn" id="help-btn" title="How to play" aria-label="How to play">?</button><button class="save-btn" id="save-btn"><span class="save-icon">↥</span><span>Saved</span></button></div>
+    </header>
+    <section class="welcome-card" aria-label="World status">
+      <div class="eyebrow"><span class="sparkle">✦</span> A FRESH START</div>
+      <h1>Make yourself<br><span>at home.</span></h1>
+      <p>A little meadow, a lot of possibility.</p>
+      <div class="weather-row"><span class="sun-icon">☀</span><span>Clear skies</span><span class="weather-dot">·</span><span id="time-of-day">Day 1</span></div>
+    </section>
+    <div class="world-note"><span class="note-pin">⌖</span><span>Sunmeadow</span><span class="note-line"></span><span id="coords">0, 0</span></div>
+    <section class="status-card" aria-label="Player status">
+      <div class="player-chip"><div class="avatar">☺</div><div><div class="tiny-label">EXPLORER</div><div class="player-name">Little Builder</div></div><button id="rename-btn" class="tiny-action" title="Rename explorer">✎</button></div>
+      <div class="status-divider"></div>
+      <div class="stat-label"><span>GOOD MORNING</span><span class="status-spark">✦</span></div>
+      <div class="hearts" aria-label="Health: 5 hearts"><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span></div>
+      <div class="level-row"><span>Little by little</span><span>LV <b id="level">01</b></span></div>
+      <div class="xp-track"><span id="xp-fill"></span></div>
+    </section>
+    <div class="quest-pill"><span class="quest-icon">✧</span><span><b>Today's adventure</b><small id="quest-text">Make something wonderful</small></span><span class="quest-count" id="block-count">0 / 8</span></div>
+    <div class="interaction-hint" id="interaction-hint"><span class="mouse-symbol">⌖</span><span>Click a block to gather it</span><kbd>?</kbd></div>
+    <aside class="build-panel" aria-label="Building materials">
+      <div class="panel-title"><span>YOUR PACK</span><button id="pack-toggle" aria-label="Toggle pack">⌄</button></div>
+      <div class="pack-summary"><span class="pack-orb">✦</span><span><b id="pack-count">12</b><small>things to build with</small></span></div>
+      <div class="inventory-list" id="inventory-list"></div>
+      <div class="panel-foot"><span class="tiny-leaf">✿</span> Gather a little, build a lot.</div>
+    </aside>
+    <div class="controls-card"><div class="controls-title">A FEW LITTLE SHORTCUTS</div><div class="control-row"><span class="key-group"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><span>Wander around</span></div><div class="control-row"><span class="key-group"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span><span>Or use arrow keys</span></div><div class="control-row"><span class="mouse-icon">◉</span><span>Click to gather</span><kbd class="right-key">RIGHT</kbd><span>place a block</span></div></div>
+    <footer class="bottom-ui">
+      <div class="hotbar-wrap"><div class="hotbar-label"><span>YOUR HOTBAR</span><span class="wheel-hint">Scroll to switch</span></div><div class="hotbar" id="hotbar"></div></div>
+      <div class="bottom-tip"><span class="tip-spark">✦</span><span id="tip-text">Every great world starts with one block.</span></div>
+      <button class="journal-btn" id="journal-btn"><span>▤</span><span>Journal</span><span class="journal-arrow">↗</span></button>
+    </footer>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="modal-backdrop" id="modal-backdrop" hidden><section class="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div class="modal-icon">✦</div><div class="eyebrow">A NOTE FROM THE MEADOW</div><h2 id="modal-title">A world of your own</h2><p id="modal-copy"></p><div id="modal-content"></div><button class="modal-primary" id="modal-ok">Sounds lovely</button></section></div>
+    <div class="touch-controls" aria-label="Touch movement controls"><button data-dir="up">↑</button><div><button data-dir="left">←</button><button data-dir="down">↓</button><button data-dir="right">→</button></div></div>
+    <div class="mobile-actions"><button id="mobile-gather">Gather</button><button id="mobile-place">Place block</button></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
