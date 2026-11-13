@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10131c">
+  <title>Lunar Recycler — Salvage Run</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lunar Recycler home"><span class="brand-mark">◒</span><span>LUNAR<span class="brand-light">/</span>RECYCLER</span></a>
+      <div class="mission-tag"><span class="live-dot"></span> FIELD OPERATION <span class="tag-divider">/</span> SECTOR 07</div>
+      <button class="icon-button" id="sound-button" aria-label="Toggle sound" title="Sound on/off">♫</button>
+    </header>
+    <section class="game-layout" aria-label="Lunar Recycler game">
+      <div class="game-column">
+        <div class="canvas-wrap">
+          <canvas id="game" width="1000" height="650" aria-label="Game field: collect lunar scrap and bring it back to the recycler"></canvas>
+          <div class="screen-overlay" id="screen-overlay">
+            <div class="overlay-card" id="overlay-card"></div>
+          </div>
+          <div class="toast" id="toast" aria-live="polite"></div>
+          <div class="mobile-controls" aria-label="Touch controls">
+            <div class="dpad">
+              <button data-dir="up" aria-label="Move up">▲</button>
+              <button data-dir="left" aria-label="Move left">◀</button>
+              <button data-dir="down" aria-label="Move down">▼</button>
+              <button data-dir="right" aria-label="Move right">▶</button>
+            </div>
+            <div class="touch-actions"><button data-action="pulse">PULSE</button><button data-action="interact">ACTION</button></div>
+          </div>
+        </div>
+        <div class="controls-strip">
+          <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE</span>
+          <span><kbd>SPACE</kbd> PULSE</span>
+          <span><kbd>E</kbd> SHOP / DOCK</span>
+          <span class="controls-note">RETURN TO BASE TO CASH IN</span>
+        </div>
+      </div>
+      <aside class="dashboard">
+        <div class="panel mission-panel">
+          <div class="panel-kicker">ACTIVE CONTRACT <span class="contract-id">#LR-07</span></div>
+          <h1>Clean up<br>the crater.</h1>
+          <p>Recover lunar salvage and bring it back to the recycler before the crawler finds you.</p>
+          <div class="objective-row"><span class="objective-icon">✳</span><span>RECOVER <b id="goal-value">30</b> SCRAP</span><span class="objective-count" id="goal-count">0 / 30</span></div>
+          <div class="progress-track"><i id="goal-progress"></i></div>
+        </div>
+        <div class="stats-grid">
+          <div class="panel stat-card"><span class="stat-label">CREDITS</span><strong id="credits">0</strong><span class="stat-foot">AVAILABLE FUNDS</span></div>
+          <div class="panel stat-card"><span class="stat-label">CARGO</span><strong><span id="cargo">0</span><small id="capacity">/ 10</small></strong><span class="stat-foot">SCRAP ONBOARD</span></div>
+        </div>
+        <div class="panel status-panel">
+          <div class="status-head"><span class="panel-kicker">ROVER STATUS</span><span class="status-live">● ONLINE</span></div>
+          <div class="status-line"><span>Integrity</span><span class="health-dots" id="health-dots"></span></div>
+          <div class="status-line"><span>Drive system</span><b id="drive-status">Standard</b></div>
+          <div class="status-line"><span>Pulse charge</span><div class="mini-meter"><i id="pulse-meter"></i></div></div>
+          <div class="status-line"><span>Zone</span><b>CRATER 07-A</b></div>
+        </div>
+        <button class="shop-button" id="shop-button"><span class="shop-icon">＋</span><span><b>UPGRADE ROVER</b><small>Visit the base shop · E</small></span><span class="button-arrow">↗</span></button>
+        <div class="panel tip-panel"><span class="tip-icon">⌁</span><p><b>FIELD TIP</b><br>Scrap pays <span id="scrap-value">12</span> credits each. Your cargo is automatically unloaded when you return to base.</p></div>
+        <div class="run-footer"><span>LOCAL TIME <b id="run-time">00:00</b></span><span>BEST RUN <b id="best-run">0</b></span></div>
+      </aside>
+    </section>
+    <footer class="page-footer"><span>© LUNAR RECYCLING CORP.</span><span>EARTH'S MESS. OUR PROBLEM.</span><span>v1.0.7 <i>●</i></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
